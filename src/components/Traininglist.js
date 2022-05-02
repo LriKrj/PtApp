@@ -6,6 +6,8 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 import Button from "@mui/material/Button";
 import moment from "moment";
+import Addtraining from "./Addtraining";
+import Edittraining from "./Edittraining";
 
 export default function Traininglist() {
   const [workouts, setWorkouts] = useState([]);
@@ -53,13 +55,27 @@ const updateWorkout = (training, link) => {
   };
 
   const columns = [
-    { headerName: "Activity", field: "activity", sortable: true, filter: true },
-    { headerName: "Duration (minutes)", field: "duration", sortable: true, filter: true },
-    { headerName: "First name", field: 'customer.firstname', sortable: true, filter: true },
-    { headerName: "Last name", field: 'customer.lastname', sortable: true, filter: true },
-    { headerName: "Date", field: "date", sortable: true, filter: true, cellRenderer: (data) => {
+    { headerName: "Activity", field: "activity", sortable: true, filter: true, floatingFilter: true },
+    { headerName: "Duration (minutes)", field: "duration", sortable: true, filter: true, floatingFilter: true },
+     
+    
+    { headerName: "Date", field: "date", sortable: true, filter: true, floatingFilter: true, cellRenderer: (data) => {
         return moment(data.value).format("DD.MM.YYYY HH:mm")
-    } }
+    } },
+    {headerName: 'Edit', 
+          sortable: false, 
+          filter: false,
+          floatingFilter: false,
+          width: 100,
+          cellRenderer: row => <Edittraining updateWorkout={updateWorkout} training={row.data}/>},
+    {headerName: 'Delete', 
+          field: 'id', 
+          sortable: false, 
+          filter: false,
+          floatingFilter: false,
+          width: 100, 
+          cellRenderer: row => <Button size="small"   onClick={() => deleteWorkout(row.data.links[0].href)}>Delete</Button> },
+    
   ];
 
   return (
