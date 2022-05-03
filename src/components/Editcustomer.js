@@ -16,7 +16,7 @@ export default function Editcustomer(props) {
     postcode: "",
     city: "",
     email: "",
-    phone: ""
+    phone: "",
   });
 
   const handleClickOpen = () => {
@@ -28,7 +28,7 @@ export default function Editcustomer(props) {
       postcode: props.customer.postcode,
       city: props.customer.city,
       email: props.customer.email,
-      phone: props.customer.phone
+      phone: props.customer.phone,
     });
     setOpen(true);
   };

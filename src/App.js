@@ -8,6 +8,7 @@ import Traininglist from "./components/Traininglist";
 import { Tab } from "@mui/material";
 import { Tabs } from "@mui/material";
 import { useState } from "react";
+import Stats from "./components/Stats";
 
 function App() {
   const [tabs, setTabs] = useState("one");
@@ -25,6 +26,8 @@ function App() {
         <Tabs value={tabs} onChange={handleChange}>
           <Tab value="one" label="CUSTOMERS" />
           <Tab value="two" label="TRAININGS" />
+          <Tab value="three" label="STATS"/>
+
         </Tabs>
       </AppBar>
       {tabs === "one" && (
@@ -35,6 +38,11 @@ function App() {
       {tabs === "two" && (
         <div>
           <Traininglist />
+        </div>
+      )}
+      {tabs === "three" && (
+        <div>
+          <Stats />
         </div>
       )}
     </div>

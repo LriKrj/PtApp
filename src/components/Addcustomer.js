@@ -18,7 +18,7 @@ export default function Addcustomer(props) {
     postcode: "",
     city: "",
     email: "",
-    phone: ""
+    phone: "",
   });
 
   const handleClickOpen = () => {
@@ -57,7 +57,7 @@ export default function Addcustomer(props) {
             value={customer.firstname}
             label="First name"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -65,7 +65,7 @@ export default function Addcustomer(props) {
             value={customer.lastname}
             label="Last name"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -73,7 +73,7 @@ export default function Addcustomer(props) {
             value={customer.streetaddress}
             label="Address"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -81,7 +81,7 @@ export default function Addcustomer(props) {
             value={customer.postcode}
             label="Post code"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -89,7 +89,7 @@ export default function Addcustomer(props) {
             value={customer.city}
             label="City"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -97,7 +97,7 @@ export default function Addcustomer(props) {
             value={customer.email}
             label="Email"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
           <TextField
             margin="dense"
@@ -105,7 +105,7 @@ export default function Addcustomer(props) {
             value={customer.phone}
             label="Phone number"
             fullWidth
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
           />
         </DialogContent>
         <DialogActions>

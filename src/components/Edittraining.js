@@ -10,18 +10,17 @@ import { useState } from "react";
 export default function Edittraining(props) {
   const [open, setOpen] = useState(false);
   const [training, setTraining] = useState({
-        date: "",
-        duration: "",
-        activity: "",
-      
+    date: "",
+    duration: "",
+    activity: "",
   });
 
   const handleClickOpen = () => {
     setTraining({
-        date: props.training.date,
-        duration: props.training.duration,
-        activity: props.training.activity
-    })
+      date: props.training.date,
+      duration: props.training.duration,
+      activity: props.training.activity,
+    });
     setOpen(true);
   };
 
@@ -33,7 +32,7 @@ export default function Edittraining(props) {
     setTraining({ ...training, [event.target.name]: event.target.value });
   };
 
-  const updateTraining= () => {
+  const updateTraining = () => {
     props.updateTraining(training, props.training.links[0].href);
     handleClickClose();
   };
@@ -71,13 +70,12 @@ export default function Edittraining(props) {
             onChange={(e) => handleInputChange(e)}
             fullWidth
           />
-          </DialogContent>
+        </DialogContent>
         <DialogActions>
           <Button onClick={handleClickClose}>Cancel</Button>
           <Button onClick={updateTraining}>Save</Button>
         </DialogActions>
       </Dialog>
     </div>
-    );
+  );
 }
-
