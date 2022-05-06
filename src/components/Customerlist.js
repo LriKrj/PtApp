@@ -114,6 +114,20 @@ export default function Customerlist() {
       filter: true,
       floatingFilter: true,
     },
+
+    {
+      headerName: "Add",
+      sortable: false,
+      filter: false,
+      floatingFilter: false,
+      width: 250,
+      cellRenderer: (row) => (
+        <Addtraining
+          saveTraining={saveTraining}
+          training={row.data.links[0].href}
+        />
+      ),
+    },    
     {
       headerName: "Edit",
       width: 100,

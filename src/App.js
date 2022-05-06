@@ -27,8 +27,8 @@ function App() {
         <Tabs value={tabs} onChange={handleChange}>
           <Tab value="one" label="CUSTOMERS" />
           <Tab value="two" label="TRAININGS" />
-          <Tab value="three" label="STATS"/>
-          <Tab value="four" label="CALENDAR"/>
+          <Tab value="three" label="CALENDAR"/>
+          <Tab value="four" label="STATS"/>
 
         </Tabs>
       </AppBar>
@@ -44,12 +44,12 @@ function App() {
       )}
       {tabs === "three" && (
         <div>
-          <Stats />
+          <Calendar />
         </div>
       )}
       {tabs === "four" && (
         <div>
-          <Calendar />
+          <Stats />
         </div>
       )}
     </div>

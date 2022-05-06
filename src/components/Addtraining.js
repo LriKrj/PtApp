@@ -6,6 +6,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 export default function Addtraining(props) {
   const [open, setOpen] = useState(false);
@@ -29,8 +32,12 @@ export default function Addtraining(props) {
   };
 
   const addTraining = () => {
+    setTraining({ ...training, date: new Date(training.date).toISOString });
     props.saveTraining(training);
     handleClose();
+  };
+  const setDate = (newDate) => {
+    setTraining({ ...training, date: newDate });
   };
 
   return (
@@ -45,15 +52,17 @@ export default function Addtraining(props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a training</DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            name="date"
-            value={training.date}
-            label="Date"
-            fullWidth
-            onChange={(e) => handleInputChange(e)}
-          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              renderInput={(props) => (
+                <TextField {...props} margin="dense" variant="standard" />
+              )}
+              name="date"
+              value={training.date}
+              onChange={setDate}
+              label="Date"
+            />
+          </LocalizationProvider>
           <TextField
             margin="dense"
             name="duration"
