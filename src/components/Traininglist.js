@@ -5,7 +5,6 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 import Button from "@mui/material/Button";
 import moment from "moment";
-import { format as dateFormat } from 'date-fns';
 
 import Edittraining from "./Edittraining";
 
@@ -28,8 +27,6 @@ export default function Traininglist() {
         .catch((err) => console.error(err));
     }
   };
-
-  
 
   const updateTraining = (training, link) => {
     fetch(link, {
@@ -54,7 +51,7 @@ export default function Traininglist() {
     {
       headerName: "Duration (minutes)",
       field: "duration",
-      
+
       sortable: true,
       filter: true,
       floatingFilter: true,

@@ -136,19 +136,7 @@ export default function Customerlist() {
         <Editcustomer updateCustomer={updateCustomer} customer={row.data} />
       ),
     },
-    {
-      headerName: "Add",
-      sortable: false,
-      filter: false,
-      floatingFilter: false,
-      width: 250,
-      cellRenderer: (row) => (
-        <Addtraining
-          saveTraining={saveTraining}
-          training={row.data.links[0].href}
-        />
-      ),
-    },
+    
 
     {
       headerName: "Delete",
@@ -156,7 +144,7 @@ export default function Customerlist() {
       sortable: false,
       field: "links.1.href",
       cellRenderer: (row) => (
-        <Button color="error" variant="outlined" onClick={() => deleteCustomer(row.value)}>
+        <Button color="error" onClick={() => deleteCustomer(row.value)}>
           Delete
         </Button>
       ),

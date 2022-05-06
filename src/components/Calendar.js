@@ -1,47 +1,40 @@
-import React, {useEffect, useState} from "react";
-import { Calendar, momentLocalizer } from 'react-big-calendar'
-import moment from 'moment'
+import React, { useEffect, useState } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-
+import "moment/locale/en-gb";
 
 export default function Trainingcalendar() {
+  const localizer = momentLocalizer(moment);
 
-  const localizer = momentLocalizer(moment)
+  const [trainings, setTrainings] = useState([]);
 
-    const [trainings, setTrainings] = useState([]);
+  useEffect(() => fetchData(), []);
 
-    const calendarEvents = trainings.map((training) => {
-        return {
-            title: training.activity,
-            start: new Date(training.date),
-            end: moment(training.date).add((training.duration), 'm').toDate()
-        }
-    })
+  const fetchData = () => {
+    fetch("https://customerrest.herokuapp.com/api/trainings")
+      .then((response) => response.json())
+      .then((data) => setTrainings(data.content));
+  };
 
-    useEffect(()=> {
-        const fetchData =() => {
-            fetch("https://customerrest.herokuapp.com/api/trainings")
-            .then(response=>response.json())
-            .then(data=>setTrainings(data.content))
-        };
-        fetchData();
-     }, []);
+  const calendarEvents = trainings.map((training) => {
+    return {
+      title: training.activity,
+      start: new Date(training.date),
+      end: moment(training.date).add(training.duration, "m").toDate(),
+    };
+  });
 
-    return (
-        <div>
-        <Calendar
-            style={{height:750}}
-            startAccessor="start"
-            endAccessor="end"
-            localizer={localizer}
-            events={calendarEvents}
-            defaultView={"week"}
-            defaultDate={new Date()}
-            
-        />
-        </div>
-    )
-
-
+  return (
+    <div>
+      <Calendar
+        startAccessor="start"
+        endAccessor="end"
+        localizer={localizer}
+        events={calendarEvents}
+        defaultView={"week"}
+        defaultDate={new Date()}
+      />
+    </div>
+  );
 }

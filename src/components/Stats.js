@@ -37,7 +37,7 @@ export default function Stats() {
     <div>
       <div style={{ width: "90%" }}>
         <ResponsiveContainer width="80%" height={650}>
-          <BarChart data={training} margin={{ top: 50 }}>
+          <BarChart data={training} margin={{ top: 30 }}>
             <XAxis dataKey="activity" />
             <YAxis />
             <Tooltip />
