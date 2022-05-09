@@ -127,7 +127,7 @@ export default function Customerlist() {
           training={row.data.links[0].href}
         />
       ),
-    },    
+    },
     {
       headerName: "Edit",
       width: 100,
@@ -136,7 +136,6 @@ export default function Customerlist() {
         <Editcustomer updateCustomer={updateCustomer} customer={row.data} />
       ),
     },
-    
 
     {
       headerName: "Delete",

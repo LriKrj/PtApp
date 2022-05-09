@@ -42,17 +42,13 @@ export default function Addtraining(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>
-        Add training
-      </Button>
+      <Button onClick={handleClickOpen}>Add training</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a training</DialogTitle>
         <DialogContent>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
-              renderInput={(props) => (
-                <TextField {...props}  />
-              )}
+              renderInput={(props) => <TextField {...props} />}
               name="date"
               value={training.date}
               onChange={setDate}

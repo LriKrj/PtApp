@@ -28,6 +28,7 @@ export default function Trainingcalendar() {
   return (
     <div>
       <Calendar
+        style={{ height: 800, width: "95%" }}
         startAccessor="start"
         endAccessor="end"
         localizer={localizer}
